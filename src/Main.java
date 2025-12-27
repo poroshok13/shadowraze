@@ -3,7 +3,7 @@ public class Main {
 
         System.out.println("=== Grocery Store Management System ===\n");
 
-            Product p1 = new Product(1, "Milk", 450, 20);
+            Product p1 = new Product(1, "Milk", 650, 20);
         Product p2 = new Product(2, "Bread", 200, 0);
 
         Customer c1 = new Customer(101, "Danil", "Regular", 90000);
