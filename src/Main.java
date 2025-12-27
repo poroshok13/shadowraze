@@ -22,11 +22,6 @@ public class Main {
         System.out.println("\n--- SALE ---");
         System.out.println(s1);
 
-        System.out.println("\n--- TESTING METHODS ---");
-        System.out.println("Milk in stock: " + p1.isInStock());
-        p2.restock(15);
-        System.out.println("Bread after restock: " + p2.getStockQuantity());
-
         s1.addItem(p1.getPrice());
         s1.addItem(1000);
         System.out.println("Sale total: " + s1.getTotalAmount());
