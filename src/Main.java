@@ -3,13 +3,13 @@ public class Main {
 
         System.out.println("=== Grocery Store Management System ===\n");
 
-        Product p1 = new Product(1, "Milk", 450, 20);
+            Product p1 = new Product(1, "Milk", 450, 20);
         Product p2 = new Product(2, "Bread", 200, 0);
 
-        Customer c1 = new Customer(101, "Ali", "Regular", 90000);
-        Customer c2 = new Customer(102, "Dana", "Gold", 150000);
+        Customer c1 = new Customer(101, "Danil", "Regular", 90000);
+        Customer c2 = new Customer(102, "Madiyar", "Gold", 150000);
 
-        Sale s1 = new Sale(1001, "Ali", 0, "26.12.2025");
+        Sale s1 = new Sale(1001, "Danil", 0, "26.12.2025");
 
         System.out.println("--- PRODUCTS ---");
         System.out.println(p1);
@@ -33,7 +33,7 @@ public class Main {
         System.out.println("Large sale: " + s1.isLargeSale());
 
         c1.addPurchase(s1.getTotalAmount());
-        System.out.println("Ali VIP: " + c1.isVIP());
+        System.out.println("Danil VIP: " + c1.isVIP());
 
         System.out.println("\n=== Program Complete ===");
     }
