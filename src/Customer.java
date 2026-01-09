@@ -1,62 +1,26 @@
 public class Customer {
 
-    private int customerId;
+    private int id;
     private String name;
-    private String membershipLevel;
-    private double totalPurchases;
+    private double totalSpent;
 
-    public Customer(int customerId, String name, String membershipLevel, double totalPurchases) {
-        this.customerId = customerId;
+    public Customer(int id, String name) {
+        this.id = id;
         this.name = name;
-        this.membershipLevel = membershipLevel;
-        this.totalPurchases = totalPurchases;
-    }
-
-    public int getCustomerId() {
-        return customerId;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getMembershipLevel() {
-        return membershipLevel;
-    }
-
-    public double getTotalPurchases() {
-        return totalPurchases;
-    }
-
-    public void setCustomerId(int customerId) {
-        this.customerId = customerId;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setMembershipLevel(String membershipLevel) {
-        this.membershipLevel = membershipLevel;
-    }
-
-    public void setTotalPurchases(double totalPurchases) {
-        this.totalPurchases = totalPurchases;
-    }
-
-    public boolean isVIP() {
-        return totalPurchases > 100000;
+        this.totalSpent = 0;
     }
 
     public void addPurchase(double amount) {
-        totalPurchases += amount;
+        totalSpent += amount;
+    }
+
+    public boolean isVIP() {
+        return totalSpent > 100000;
     }
 
     @Override
     public String toString() {
-        return "Customer{id=" + customerId +
-                ", name='" + name +
-                "', level='" + membershipLevel +
-                "', totalPurchases=" + totalPurchases + "}";
+        return "Customer | ID: " + id + ", Name: " + name +
+                ", Total spent: " + totalSpent;
     }
 }

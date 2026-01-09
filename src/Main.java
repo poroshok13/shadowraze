@@ -1,35 +1,84 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
 public class Main {
+
+    static Scanner sc = new Scanner(System.in);
+    static ArrayList<Employee> employees = new ArrayList<>();
+    static ArrayList<Product> products = new ArrayList<>();
+
     public static void main(String[] args) {
 
-        System.out.println("=== Grocery Store Management System ===\n");
+        int choice;
 
-            Product p1 = new Product(1, "Milk", 650, 20);
-        Product p2 = new Product(2, "Bread", 200, 0);
+        do {
+            System.out.println("\n=== Grocery Store Menu ===");
+            System.out.println("1. Add Cashier");
+            System.out.println("2. View Employees");
+            System.out.println("3. Add Product");
+            System.out.println("4. View Products");
+            System.out.println("5. Demonstrate Polymorphism");
+            System.out.println("0. Exit");
 
-        Customer c1 = new Customer(101, "Danil", "Regular", 90000);
-        Customer c2 = new Customer(102, "Madiyar", "Gold", 150000);
+            choice = sc.nextInt();
 
-        Sale s1 = new Sale(1001, "Danil", 0, "26.12.2025");
+            switch (choice) {
+                case 1 -> addCashier();
+                case 2 -> viewEmployees();
+                case 3 -> addProduct();
+                case 4 -> viewProducts();
+                case 5 -> demonstratePolymorphism();
+            }
 
-        System.out.println("--- PRODUCTS ---");
-        System.out.println(p1);
-        System.out.println(p2);
+        } while (choice != 0);
+    }
 
-        System.out.println("\n--- CUSTOMERS ---");
-        System.out.println(c1);
-        System.out.println(c2);
+    static void addCashier() {
+        System.out.print("ID: ");
+        int id = sc.nextInt();
+        sc.nextLine();
 
-        System.out.println("\n--- SALE ---");
-        System.out.println(s1);
+        System.out.print("Name: ");
+        String name = sc.nextLine();
 
-        s1.addItem(p1.getPrice());
-        s1.addItem(1000);
-        System.out.println("Sale total: " + s1.getTotalAmount());
-        System.out.println("Large sale: " + s1.isLargeSale());
+        System.out.print("Salary: ");
+        double salary = sc.nextDouble();
 
-        c1.addPurchase(s1.getTotalAmount());
-        System.out.println("Danil VIP: " + c1.isVIP());
+        System.out.print("Register number: ");
+        int reg = sc.nextInt();
 
-        System.out.println("\n=== Program Complete ===");
+        employees.add(new Cashier(id, name, salary, reg));
+    }
+
+    static void viewEmployees() {
+        for (Employee e : employees) {
+            System.out.println(e);
+        }
+    }
+
+    static void addProduct() {
+        System.out.print("ID: ");
+        int id = sc.nextInt();
+        sc.nextLine();
+
+        System.out.print("Name: ");
+        String name = sc.nextLine();
+
+        System.out.print("Price: ");
+        double price = sc.nextDouble();
+
+        products.add(new Product(id, name, price));
+    }
+
+    static void viewProducts() {
+        for (Product p : products) {
+            System.out.println(p);
+        }
+    }
+
+    static void demonstratePolymorphism() {
+        for (Employee e : employees) {
+            e.work(); // ← ПОЛИМОРФИЗМ
+        }
     }
 }

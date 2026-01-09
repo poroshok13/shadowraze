@@ -1,62 +1,53 @@
 public class Product {
 
-    private int productId;
+    private int id;
     private String name;
     private double price;
-    private int stockQuantity;
 
-    public Product(int productId, String name, double price, int stockQuantity) {
-        this.productId = productId;
-        this.name = name;
-        this.price = price;
-        this.stockQuantity = stockQuantity;
+    public Product(int id, String name, double price) {
+        setId(id);
+        setName(name);
+        setPrice(price);
     }
 
-    public int getProductId() {
-        return productId;
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        if (id <= 0) {
+            System.out.println("Invalid product ID");
+            return;
+        }
+        this.id = id;
     }
 
     public String getName() {
         return name;
     }
 
+    public void setName(String name) {
+        if (name.isEmpty()) {
+            System.out.println("Product name cannot be empty");
+            return;
+        }
+        this.name = name;
+    }
+
     public double getPrice() {
         return price;
     }
 
-    public int getStockQuantity() {
-        return stockQuantity;
-    }
-
-    public void setProductId(int productId) {
-        this.productId = productId;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public void setPrice(double price) {
+        if (price < 0) {
+            System.out.println("Price cannot be negative");
+            return;
+        }
         this.price = price;
-    }
-
-    public void setStockQuantity(int stockQuantity) {
-        this.stockQuantity = stockQuantity;
-    }
-
-    public boolean isInStock() {
-        return stockQuantity > 0;
-    }
-
-    public void restock(int amount) {
-        stockQuantity += amount;
     }
 
     @Override
     public String toString() {
-        return "Product{id=" + productId +
-                ", name='" + name +
-                "', price=" + price +
-                ", stock=" + stockQuantity + "}";
+        return "Product | ID: " + id + ", Name: " + name + ", Price: " + price;
     }
 }
