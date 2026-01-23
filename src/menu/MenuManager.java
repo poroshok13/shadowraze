@@ -92,7 +92,6 @@ public class MenuManager implements Menu {
         for (Employee e : employees) e.work();
     }
 
-    // ---- helpers (коротко и удобно) ----
     private String readLine(String label) {
         System.out.print(label);
         return sc.nextLine();
