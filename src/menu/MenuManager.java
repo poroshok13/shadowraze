@@ -1,5 +1,6 @@
 package menu;
 
+import dao.EmployeeDAO;
 import exception.InvalidInputException;
 import model.*;
 
@@ -9,7 +10,7 @@ import java.util.Scanner;
 public class MenuManager implements Menu {
 
     private final Scanner sc = new Scanner(System.in);
-    private final ArrayList<Employee> employees = new ArrayList<>();
+    private final EmployeeDAO employeeDAO = new EmployeeDAO();
     private final ArrayList<Product> products = new ArrayList<>();
 
     @Override
@@ -27,7 +28,6 @@ public class MenuManager implements Menu {
     public void run() {
         while (true) {
             displayMenu();
-
             try {
                 int choice = readInt("Choice: ");
 
@@ -49,14 +49,15 @@ public class MenuManager implements Menu {
         }
     }
 
+
     private void addCashier() throws InvalidInputException {
         int id = readInt("ID: ");
         String name = readLine("Name: ");
         double salary = readDouble("Salary: ");
         int reg = readInt("Register: ");
 
-        employees.add(new Cashier(id, name, salary, reg));
-        System.out.println("✅ Cashier added");
+        employeeDAO.insertCashier(new Cashier(id, name, salary, reg));
+        System.out.println("Cashier added");
     }
 
     private void addProduct() throws InvalidInputException {
@@ -65,15 +66,18 @@ public class MenuManager implements Menu {
         double price = readDouble("Price: ");
 
         products.add(new Product(id, name, price));
-        System.out.println("✅ Product added");
+        System.out.println("Product added");
     }
 
     private void viewEmployees() {
-        if (employees.isEmpty()) {
-            System.out.println("No employees yet");
+        var list = employeeDAO.getAll();
+        if (list.isEmpty()) {
+            System.out.println("No employee");
             return;
         }
-        for (Employee e : employees) System.out.println(e);
+        for (Employee e : list) {
+            System.out.println(e);
+        }
     }
 
     private void viewProducts() {
@@ -85,11 +89,14 @@ public class MenuManager implements Menu {
     }
 
     private void demoWork() {
-        if (employees.isEmpty()) {
+        var list = employeeDAO.getAll();
+        if (list.isEmpty()) {
             System.out.println("No employees yet");
             return;
         }
-        for (Employee e : employees) e.work();
+        for (Employee e : list) {
+            e.work();
+        }
     }
 
     private String readLine(String label) {

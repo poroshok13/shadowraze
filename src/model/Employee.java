@@ -28,6 +28,18 @@ public abstract class Employee {
         this.salary = salary;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public double getSalary() {
+        return salary;
+    }
+
     @Override
     public String toString() {
         return "Employee | " + id + " | " + name + " | " + salary;
