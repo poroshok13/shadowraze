@@ -15,13 +15,13 @@ public class MenuManager implements Menu {
         System.out.println("\n=== STAFF MANAGEMENT (Week 8) ===");
         System.out.println("1) Add Cashier");
         System.out.println("2) View All Staff");
-        System.out.println("3) Update Staff");            // NEW
-        System.out.println("4) Delete Staff");            // NEW
-        System.out.println("5) Search by Name");          // NEW
-        System.out.println("6) Search by Salary Range");  // NEW
-        System.out.println("7) High-Paid Staff (Min)");   // NEW
+        System.out.println("3) Update Staff");
+        System.out.println("4) Delete Staff");
+        System.out.println("5) Search by Name");
+        System.out.println("6) Search by Salary Range");
+        System.out.println("7) High-Paid Staff (Min)");
         System.out.println("8) Polymorphism Demo");
-        System.out.println("9) Add Product (Stub)");      // В Week 8 всё из DB
+        System.out.println("9) Add Product (Stub)");
         System.out.println("10) View Products (Stub)");
         System.out.println("11) About System");
         System.out.println("0) Exit");
@@ -82,7 +82,7 @@ public class MenuManager implements Menu {
         String salStr = sc.nextLine();
         double salary = salStr.isEmpty() ? existing.getSalary() : Double.parseDouble(salStr);
 
-        int reg = ((Cashier)existing).getRegisterNumber(); // Для простоты приведения
+        int reg = ((Cashier)existing).getRegisterNumber();
 
         if (employeeDAO.updateCashier(new Cashier(id, name, salary, reg))) {
             System.out.println("Updated!");

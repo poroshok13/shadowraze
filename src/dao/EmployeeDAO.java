@@ -81,7 +81,6 @@ public class EmployeeDAO {
 
     public List<Employee> searchByName(String name) {
         List<Employee> list = new ArrayList<>();
-        // Используем ILIKE для PostgreSQL
         String sql = "SELECT * FROM employee WHERE name ILIKE ? ORDER BY name";
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
